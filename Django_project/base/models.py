@@ -49,24 +49,9 @@ class Account(models.Model):
         return str(self.number)
 
 
-class Income(models.Model):
+class Transaction(models.Model):
     affected_account = models.ForeignKey(Account, on_delete=models.SET_NULL, null=True)
     amount = models.DecimalField(max_digits=20, decimal_places=2)
-    updated = models.DateTimeField(auto_now=True)
-    created = models.DateTimeField(auto_now_add=True)
-    person = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
-
-    class Meta:
-        ordering = ["-updated", "-created"]
-
-    def __str__(self):
-        return str(self.amount)
-
-
-class Spends(models.Model):
-    affected_account = models.ForeignKey(Account, on_delete=models.SET_NULL, null=True)
-    amount = models.DecimalField(max_digits=20, decimal_places=2)
-    category = models.CharField(max_length=50, choices=CATEGORIES)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
     person = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)

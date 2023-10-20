@@ -1,11 +1,11 @@
 from django.shortcuts import render
-from base.models import Account, Income, Spends
+from base.models import Account, Customer, Transaction
 from django.db.models import Q
 
 
 def set_account_amount(account):
-    incomes = Income.objects.filter(affected_account=account)
-    spending = Spends.objects.filter(affected_account=account)
+    incomes = Transaction.objects.filter(affected_account=account)
+    spending = Transaction.objects.filter(affected_account=account)
     amount = 0
     for inc in incomes:
         amount += inc.amount
@@ -16,8 +16,8 @@ def set_account_amount(account):
 
 def home_page(request):
     account = Account.objects.get(id=1)
-    incomes = Income.objects.filter(affected_account=account)
-    spending = Spends.objects.filter(affected_account=account)
+    incomes = Transaction.objects.filter(affected_account=account)
+    spending = Transaction.objects.filter(affected_account=account)
     account.amount = set_account_amount(account)
     context = {"account": account, "incomes": incomes, "spending": spending
                }
@@ -26,14 +26,14 @@ def home_page(request):
 
 def family_page(request):
     q = request.GET.get("q") if request.GET.get("q") is not None else ""
-    transactions_i = Income.objects.filter(
+    transactions_i = Transaction.objects.filter(
         person__name__icontains=q
     )
     # customer = Customer.objects.get(name="Kiril Kirilov")
     # account = Account.objects.filter(members=customer)[:1]
     account = Account.objects.get(name="Kirilovi")
-    incomes = Income.objects.filter(affected_account=account)
-    spending = Spends.objects.filter(affected_account=account)
+    incomes = Transaction.objects.filter(affected_account=account)
+    spending = Transaction.objects.filter(affected_account=account)
     account.amount = set_account_amount(account)
     members = account.members
     context = {"account": account,

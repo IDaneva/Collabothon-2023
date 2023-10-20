@@ -54,6 +54,7 @@ class Income(models.Model):
     amount = models.DecimalField(max_digits=20, decimal_places=2)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
+    person = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
 
     class Meta:
         ordering = ["-updated", "-created"]
@@ -68,6 +69,7 @@ class Spends(models.Model):
     category = models.CharField(max_length=50, choices=CATEGORIES)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
+    person = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
 
     class Meta:
         ordering = ["-updated", "-created"]

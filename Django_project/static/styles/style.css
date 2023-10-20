@@ -1,0 +1,110 @@
+/* Reset some default styles and set a background color */
+body, h1, h2, p, ul {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+.account-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.account-details, .account-balance {
+    text-align: center;
+}
+
+h2 {
+    font-size: 18px;
+    color: #333;
+}
+
+.transaction-history {
+    margin-top: 20px;
+}
+
+.transaction-list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.income, .spend {
+    flex: 1;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Define colors and spacing for the transaction lists */
+.income ul li, .spend ul li {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.income ul li {
+    color: #4CAF50; /* Green color for income */
+}
+
+.spend ul li {
+    color: #F44336; /* Red color for spendings */
+}
+
+
+/* Add styles for the tab bar */
+.tabs {
+    text-align: center;
+}
+
+.tabs ul {
+    list-style: none;
+    padding: 0;
+}
+
+.tabs ul li {
+    display: inline;
+    margin: 0 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #333;
+}
+
+.tabs ul li.active-tab {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* Add styles to hide and show tabs */
+.tab {
+    display: none;
+}
+
+.tab.active {
+    display: block;
+}
+

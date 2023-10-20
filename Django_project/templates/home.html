@@ -1,10 +1,66 @@
 <!DOCTYPE html>
+
+{% load static %}
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+    <title>Banking Website</title>
 </head>
 <body>
-<p>Test</p>
+    <div class="container">
+        <header>
+            <h1>Welcome to Your Bank</h1>
+            <nav class="tabs">
+                <ul>
+                    <li class="active-tab">Home</li>
+                    <li>Family</li>
+                </ul>
+            </nav>
+        </header>
+        <section class="tab-content">
+            <!-- Home Tab Content -->
+            <div class="tab home-tab active">
+                <section class="account-info">
+                    <div class="account-details">
+                        <h2>Account Number:</h2>
+                        <p>123456789</p>
+                    </div>
+                    <div class="account-balance">
+                        <h2>Account Balance:</h2>
+                        <p>$10,000.00</p>
+                    </div>
+                </section>
+                <section class="transaction-history">
+                    <h2>Transaction History</h2>
+                    <div class="transaction-list">
+                        <div class="income">
+                            <p><strong>Income:</strong></p>
+                            <ul>
+                                <li>Salary - $5,000.00</li>
+                                <li>Interest - $100.00</li>
+                            </ul>
+                        </div>
+                        <div class="spend">
+                            <p><strong>Spendings:</strong></p>
+                            <ul>
+                                <li>Groceries - $200.00</li>
+                                <li>Utilities - $150.00</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- Family Tab Content (To be developed) -->
+            <div class="tab family-tab">
+                <h2>Family Tab Content</h2>
+                <!-- Add content for the Family tab here -->
+            </div>
+        </section>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>

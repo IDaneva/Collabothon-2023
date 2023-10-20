@@ -33,7 +33,7 @@ class Customer(models.Model):
 class Account(models.Model):
     holder = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
     number = models.CharField(max_length=20)
-    amount = models.IntegerField(default=0)
+    amount = models.DecimalField(default=0, max_digits=20, decimal_places=2)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 
@@ -43,7 +43,7 @@ class Account(models.Model):
 
 class Income(models.Model):
     affected_account = models.ForeignKey(Account, on_delete=models.SET_NULL, null=True)
-    amount = models.IntegerField()
+    amount = models.DecimalField(max_digits=20, decimal_places=2)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 
@@ -56,7 +56,7 @@ class Income(models.Model):
 
 class Spends(models.Model):
     affected_account = models.ForeignKey(Account, on_delete=models.SET_NULL, null=True)
-    amount = models.IntegerField()
+    amount = models.DecimalField(max_digits=20, decimal_places=2)
     category = models.CharField(max_length=50, choices=CATEGORIES)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)

@@ -40,15 +40,18 @@
                         <div class="income">
                             <p><strong>Income:</strong></p>
                             <ul>
-                                <li>Salary - $5,000.00</li>
-                                <li>Interest - $100.00</li>
+                                {% for income in incomes %}
+                                	<li>{{ income.amount }} BGN </li>
+                                {% endfor %}
+
                             </ul>
                         </div>
                         <div class="spend">
                             <p><strong>Spendings:</strong></p>
                             <ul>
-                                <li>Groceries - $200.00</li>
-                                <li>Utilities - $150.00</li>
+                                {% for spends in spending %}
+                                <li> - {{ spends.amount }} BGN {{ spends.category }}</li>
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>

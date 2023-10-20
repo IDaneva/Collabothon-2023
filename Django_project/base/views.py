@@ -1,11 +1,19 @@
 from django.shortcuts import render
 
-from base.models import Account
+from base.models import Account, Income, Spends
 
 
 def home_page(request):
     account = Account.objects.get(id=1)
-    context = {"account": account
+    incomes = Income.objects.filter(affected_account=account)
+    spending = Spends.objects.filter(affected_account=account)
+    amount = 0
+    for inc in incomes:
+        amount += inc.amount
+    for spend in spending:
+        amount -= spend.amount
+    account.amount = amount
+    context = {"account": account, "incomes": incomes, "spending": spending
                }
     return render(request, "home.html", context)
 

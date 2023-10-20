@@ -1,10 +1,69 @@
 <!DOCTYPE html>
+
+{% load static %}
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Family page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+    <title>Banking Website</title>
 </head>
 <body>
+    <div class="container">
+        <header>
+            <h1>Welcome to Your Bank, {{account.holder.name}}</h1>
+            <nav class="tabs">
+                <ul>
+                    <li class="active-tab"><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'family' %}">Family</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section class="tab-content">
+            <!-- Home Tab Content -->
+            <div class="tab home-tab active">
+                <section class="account-info">
+                    <div class="account-details">
+                        <h2>Account Number:</h2>
+                        <p>{{account.number}}</p>
+                    </div>
+                    <div class="account-balance">
+                        <h2>Account Balance:</h2>
+                        <p>{{ account.amount }} BGN</p>
+                    </div>
+                </section>
+                <section class="transaction-history">
+                    <h2>Transaction History</h2>
+                    <div class="transaction-list">
+                        <div class="income">
+                            <p><strong>Income:</strong></p>
+                            <ul>
+                                {% for income in incomes %}
+                                	<li>{{ income.amount }} BGN </li>
+                                {% endfor %}
 
+                            </ul>
+                        </div>
+                        <div class="spend">
+                            <p><strong>Spendings:</strong></p>
+                            <ul>
+                                {% for spends in spending %}
+                                <li> - {{ spends.amount }} BGN {{ spends.category }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- Family Tab Content (To be developed) -->
+            <div class="tab family-tab">
+                <h2>Family Tab Content</h2>
+                <!-- Add content for the Family tab here -->
+            </div>
+        </section>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>

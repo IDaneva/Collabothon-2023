@@ -16,8 +16,8 @@
             <h1>Welcome to Your Bank, {{account.holder.name}}</h1>
             <nav class="tabs">
                 <ul>
-                    <li class="active-tab">Home</li>
-                    <li>Family</li>
+                    <li class="active-tab"><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'family' %}">Family</a></li>
                 </ul>
             </nav>
         </header>

@@ -19,6 +19,11 @@ GENDERS = [
     ("Female", "Female")
 ]
 
+TYPES = [
+    ("Personal", "Personal"),
+    ("Family", "Family")
+]
+
 
 class Customer(models.Model):
     name = models.CharField(max_length=200)
@@ -36,6 +41,8 @@ class Account(models.Model):
     amount = models.DecimalField(default=0, max_digits=20, decimal_places=2)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
+    members = models.ManyToManyField(Customer, related_name="members", blank=True, null=True)
+    type = models.CharField(max_length=20, choices=TYPES, blank=True)
 
     def __str__(self):
         return str(self.number)

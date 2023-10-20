@@ -26,6 +26,9 @@ class Account(models.Model):
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return str(self.number)
+
 
 class Income(models.Model):
     affected_account = models.ForeignKey(Account, on_delete=models.SET_NULL, null=True)
@@ -35,6 +38,9 @@ class Income(models.Model):
 
     class Meta:
         ordering = ["-updated", "-created"]
+
+    def __str__(self):
+        return str(self.amount)
 
 
 class Spends(models.Model):
@@ -46,3 +52,7 @@ class Spends(models.Model):
 
     class Meta:
         ordering = ["-updated", "-created"]
+
+    def __str__(self):
+        return str(self.amount)
+

@@ -13,7 +13,7 @@
 <body>
     <div class="container">
         <header>
-            <h1>Welcome to Your Bank, {{account.holder.name}}</h1>
+            <h1>Welcome to Your Bank, Family {{account.name}}</h1>
             <nav class="tabs">
                 <ul>
                     <li class="active-tab"><a href="{% url 'home' %}">Home</a></li>
@@ -37,28 +37,33 @@
                 <section class="transaction-history">
                     <h2>Transaction History</h2>
                     <div class="transaction-list">
-                        <div class="income">
-                            <p><strong>Income:</strong></p>
-                            <ul>
-                                {% for t in transactions %}
-                                    {% if  t.amount >= 0 %}
-                                        <li>{{ t.amount }} BGN </li>
-                                    {% endif %}
-                                {% endfor %}
+    <div class="income">
+        <p><strong>Income:</strong></p>
+        <ul>
+            {% for income in incomes %}
+                <li>{{ income.amount }} BGN</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="spend">
+        <p><strong>Spending:</strong></p>
+        <ul>
+            {% for spends in spending %}
+                <li> - {{ spends.amount }} BGN {{ spends.category }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="members">
+        <p><strong>Members:</strong></p>
+        <ul>
+            {% for member in account.members.all %}
+                <li><a href="{% url 'family' %}?q={{member.name}}">{{ member.name }}</a></li>
+            {% endfor %}
+                <li><a href="{% url 'family' %}">All</a></li>
 
-                            </ul>
-                        </div>
-                        <div class="spend">
-                            <p><strong>Spending:</strong></p>
-                            <ul>
-                                {% for t in transactions %}
-                                    {% if t.amount < 0 %}
-                                            <li>{{ spends.amount }} BGN {{ spends.category }}</li>
-                                    {% endif %}
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
+        </ul>
+    </div>
+</div>
                 </section>
             </div>
             <!-- Family Tab Content (To be developed) -->
@@ -67,7 +72,15 @@
                 <!-- Add content for the Family tab here -->
             </div>
         </section>
+
+    <ul>
+        {% for i in transactions_i %}
+            <li>{{ i }}</li>
+        {% endfor %}
+
+    </ul>
+
     </div>
-    <script src="script.js"></script>
+{#    <script src="script.js"></script>#}
 </body>
 </html>

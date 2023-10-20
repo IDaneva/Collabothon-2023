@@ -22,21 +22,21 @@ def home_page(request):
 
 def family_page(request):
     q = request.GET.get("q") if request.GET.get("q") is not None else ""
-    transactions_i = Transactions.objects.filter(
-        person__name__icontains=q
+    account = Account.objects.get(name="Kirilovi")
+
+    transactions = Transactions.objects.filter(
+        person__name__icontains=q,
+        affected_account=account
     )
     # customer = Customer.objects.get(name="Kiril Kirilov")
     # account = Account.objects.filter(members=customer)[:1]
-    account = Account.objects.get(name="Kirilovi")
-    incomes = Transactions.objects.filter(affected_account=account)
-    spending = Transactions.objects.filter(affected_account=account)
+    # transactions = Transactions.objects.filter(affected_account=account)
     account.amount = set_account_amount(account)
     members = account.members
     context = {"account": account,
-               "incomes": incomes,
-               "spending": spending,
+               "transactions": transactions,
                "members": members,
-               "transactions_i": transactions_i
+               # "transactions_i": transactions_i
                }
     return render(request, "family.html", context)
 

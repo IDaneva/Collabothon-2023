@@ -40,16 +40,20 @@
     <div class="income">
         <p><strong>Income:</strong></p>
         <ul>
-            {% for income in incomes %}
-                <li>{{ income.amount }} BGN</li>
+            {% for t in transactions %}
+                {% if t.amount >= 0 %}
+                <li>{{ t.amount }} BGN</li>
+                {% endif %}
             {% endfor %}
         </ul>
     </div>
     <div class="spend">
         <p><strong>Spending:</strong></p>
         <ul>
-            {% for spends in spending %}
-                <li> - {{ spends.amount }} BGN {{ spends.category }}</li>
+            {% for t in transactions %}
+                {% if t.amount < 0 %}
+                <li>{{ t.amount }} BGN {{ t.category }}</li>
+                {% endif %}
             {% endfor %}
         </ul>
     </div>

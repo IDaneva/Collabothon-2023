@@ -53,7 +53,7 @@
                             <ul>
                                 {% for t in transactions %}
                                     {% if t.amount < 0 %}
-                                            <li>{{ spends.amount }} BGN {{ spends.category }}</li>
+                                            <li>{{ spends.amount }}  {{ spends.category }}</li>
                                     {% endif %}
                                 {% endfor %}
                             </ul>

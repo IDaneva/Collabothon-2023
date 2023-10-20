@@ -33,6 +33,7 @@ class Customer(models.Model):
 class Account(models.Model):
     holder = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
     number = models.CharField(max_length=20)
+    amount = models.IntegerField(default=0)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 

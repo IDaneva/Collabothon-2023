@@ -1,9 +1,13 @@
 from django.shortcuts import render
 
+from base.models import Account
+
 
 def home_page(request):
-
-    return render(request, "home.html")
+    account = Account.objects.get(id=1)
+    context = {"account": account
+               }
+    return render(request, "home.html", context)
 
 
 def family_page(request):

@@ -13,7 +13,7 @@
 <body>
     <div class="container">
         <header>
-            <h1>Welcome to Your Bank</h1>
+            <h1>Welcome to Your Bank, {{account.holder.name}}</h1>
             <nav class="tabs">
                 <ul>
                     <li class="active-tab">Home</li>
@@ -27,11 +27,11 @@
                 <section class="account-info">
                     <div class="account-details">
                         <h2>Account Number:</h2>
-                        <p>123456789</p>
+                        <p>{{account.number}}</p>
                     </div>
                     <div class="account-balance">
                         <h2>Account Balance:</h2>
-                        <p>$10,000.00</p>
+                        <p>{{ account.amount }} BGN</p>
                     </div>
                 </section>
                 <section class="transaction-history">

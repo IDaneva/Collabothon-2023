@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils import timezone
+
 
 CATEGORIES = [
     ("Shopping", "Shopping"),
@@ -12,9 +14,17 @@ CATEGORIES = [
     ("Other", "Other"),
 ]
 
+GENDERS = [
+    ("Male", "Male"),
+    ("Female", "Female")
+]
+
 
 class Customer(models.Model):
     name = models.CharField(max_length=200)
+    date_of_birth = models.DateTimeField(default=timezone.now)
+    personal_number = models.CharField(max_length=15, default="0000000000")
+    gender = models.CharField(max_length=20, choices=GENDERS, default="Male")
 
     def __str__(self):
         return self.name
@@ -46,7 +56,7 @@ class Income(models.Model):
 class Spends(models.Model):
     affected_account = models.ForeignKey(Account, on_delete=models.SET_NULL, null=True)
     amount = models.IntegerField()
-    category = models.CharField(max_length=50,choices=CATEGORIES)
+    category = models.CharField(max_length=50, choices=CATEGORIES)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 
@@ -55,4 +65,3 @@ class Spends(models.Model):
 
     def __str__(self):
         return str(self.amount)
-

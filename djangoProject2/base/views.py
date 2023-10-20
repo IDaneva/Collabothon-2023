@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from base.models import Account, Customer, Transactions
-from django.db.models import Q
+from django.db.models import Count
 
 
 def set_account_amount(account):
@@ -28,6 +28,11 @@ def family_page(request):
         person__name__icontains=q,
         affected_account=account
     )
+
+    category_counts = Transactions.objects.values('category').annotate(count=Count('category'))
+
+    unique_categories = [item['category'] for item in category_counts]
+
     # customer = Customer.objects.get(name="Kiril Kirilov")
     # account = Account.objects.filter(members=customer)[:1]
     # transactions = Transactions.objects.filter(affected_account=account)
@@ -36,7 +41,8 @@ def family_page(request):
     context = {"account": account,
                "transactions": transactions,
                "members": members,
-               # "transactions_i": transactions_i
+               # "transactions_i": transactions_i,
+               "categories": unique_categories
                }
     return render(request, "family.html", context)
 

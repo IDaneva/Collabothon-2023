@@ -12,6 +12,7 @@ CATEGORIES = [
     ("Health", "Health"),
     ("Transfers", "Transfers"),
     ("Other", "Other"),
+    ("Income", "Income"),
 ]
 
 GENDERS = [

@@ -56,5 +56,12 @@ def family_page(request):
     return render(request, "family.html", context)
 
 
-def family_cards(request):
-    return render(request, "members.html")
+def family_members(request):
+    account = Account.objects.get(name="Kirilovi")
+    member_accounts = []
+    for m in account.members.all():
+        current_account = Account.objects.get(name=m.name)
+        if current_account.number != account.number:
+            member_accounts.append(current_account)
+    context = {"account": account, "member_accounts": member_accounts}
+    return render(request, "members.html", context)

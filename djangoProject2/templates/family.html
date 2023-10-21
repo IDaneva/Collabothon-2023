@@ -53,7 +53,7 @@
         <ul>
             {% for t in transactions %}
                 {% if t.amount < 0 %}
-                <li>{{ t.amount }} BGN {{ t.category }}</li>
+                <li>{{ t.amount }} BGN {{ t.category }} {{ t.created|date:"d-m-Y"}}</li>
                 {% endif %}
             {% endfor %}
                 <li> Total: {{total_spent_amount}} BGN</li>
@@ -89,7 +89,7 @@
                 <!-- Add content for the Family tab here -->
             </div>
         </section>
-        <a href="{% url 'cards' %}">Family cards</a>
+        <a href="{% url 'members' %}">Family member information</a>
     </div>
 {#    <script src="script.js"></script>#}
 </body>

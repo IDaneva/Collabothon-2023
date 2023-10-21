@@ -26,10 +26,10 @@ def family_page(request):
     account = Account.objects.get(name="Kirilovi")
 
     transactions = Transactions.objects.filter(
-        Q(person__name__icontains=q),
-        Q(affected_account=account)
-        # Q(category__icontains=q)
+        (Q(person__name__icontains=q) & Q(affected_account=account)) |
+        (Q(affected_account=account) & Q(category__icontains=q))
     )
+
     # transactions = Transactions.objects.filter(
     #     Q(affected_account=account),
     #     Q(category__icontains=q)

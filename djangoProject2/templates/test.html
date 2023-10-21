@@ -1,25 +1,28 @@
 <!DOCTYPE html>
+{% load static %}
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'styles/family-style.css' %}" />
     <title>Banking Website</title>
   </head>
   <body>
     <div class="container">
       <header>
-        <h1>Welcome, Ivan Trifonov</h1>
+        <h1>Welcome, {{account.name}}</h1>
         <nav class="nav">
           <ul>
             <li>
-              <a href="home.html"
-                ><img src="img/home-nav.png" class="home-img"
+              <a href="{% url 'home' %}"
+                ><img src="{% static 'images/home-nav.png' %}" class="home-img"
               /></a>
             </li>
             <li>
-              <a href="family.html">
-                <img src="img/members.png" class="members-img" />
+              <a href="{% url 'family' %}">
+                <img src="{% static 'images/members.png' %}" class="members-img" />
               </a>
             </li>
           </ul>
@@ -31,55 +34,89 @@
           <section class="account-info">
             <div class="account-details">
               <h2>Account Number:</h2>
-              <p>123456789</p>
+              <p><i>{{account.number}}</i></p>
             </div>
             <div class="account-balance">
               <h2>Account Balance:</h2>
-              <p>$10,000.00</p>
+              <p><i>{{ account.amount }} BGN</i></p>
+            </div>
+          </section>
+          <section class="filters">
+            <h2>Filter transactions</h2>
+
+            <div class="custom-select">
+              <div class="select-trigger">Select a categories option</div>
+              <ul class="select-options">
+                  {% for c in categories %}
+                <li data-value="option1"><a href="{% url 'family' %}?q={{c}}">{{c}}</a></li>
+                  {% endfor %}
+                <li data-value="option2"><a href="{% url 'family' %}">All</a></li>
+
+              </ul>
+            </div>
+            <div class="custom-select2">
+              <div class="select-trigger2">Select a member option</div>
+              <ul class="select-options2">
+                  {% for member in account.members.all %}
+                <li data-value="option1"><a href="{% url 'family' %}?q={{member.name}}">{{ member.name }}</a></li>
+                  {% endfor %}
+                <li data-value="option2"><a href="{% url 'family' %}">All</a></li>
+              </ul>
             </div>
           </section>
           <section class="transaction-history">
             <h2 class="transactions-heading">Transaction History</h2>
             <div class="transaction-list">
-              <div class="transaction-container">
-                <article class="transaction">
-                  <div class="name-date">
-                    <p class="trans-name">ivan trifonov</p>
-                    <p class="trans-date">Today</p>
+              <div class="transactions-container">
+                <div class="incomes">
+                  <h3>Incomes:</h3>
+                    {% for t in transactions %}
+                        {% if t.amount >= 0 %}
+                  <div class="transaction-container t-item-1">
+                    <article class="transaction">
+                      <div class="name-date">
+                        <p class="trans-name">{{ t.category }}</p>
+                        <p class="trans-date">{{ t.created|date:"d-m-Y"}}</p>
+                      </div>
+                      <div class="value"> {{ t.amount }} BGN </div>
+                    </article>
                   </div>
-                  <div class="value">-100€</div>
-                </article>
-                <div class="separator"></div>
-              </div>
-              <div class="transaction-container">
-                <article class="transaction">
-                  <div class="name-date">
-                    <p class="trans-name">ivan trifonov</p>
-                    <p class="trans-date">Today</p>
+                        {% endif %}
+                    {% endfor %}
+
+                <div class="transaction-container t-item-1">
+                    <article class="transaction">
+                      <div class="name-date">
+                        <p class="trans-name">Total</p>
+                      </div>
+                      <div class="value"> {{ total_income_amount }} BGN </div>
+                    </article>
                   </div>
-                  <div class="value">-100€</div>
-                </article>
-                <div class="separator"></div>
-              </div>
-              <div class="transaction-container">
-                <article class="transaction">
-                  <div class="name-date">
-                    <p class="trans-name">ivan trifonov</p>
-                    <p class="trans-date">Today</p>
+
+                <div class="expenses">
+                  <h3>Expenses:</h3>
+                    {% for t in transactions %}
+                        {% if t.amount < 0 %}
+                  <div class="transaction-container t-item-1">
+                    <article class="transaction">
+                      <div class="name-date">
+                        <p class="trans-name">Total</p>
+                      </div>
+                      <div class="value">{{ total_spent_amount }} BGN</div>
+                    </article>
                   </div>
-                  <div class="value">-100€</div>
-                </article>
-                <div class="separator"></div>
-              </div>
-              <div class="transaction-container">
-                <article class="transaction">
-                  <div class="name-date">
-                    <p class="trans-name">ivan trifonov</p>
-                    <p class="trans-date">Today</p>
+                        {% endif %}
+                    {% endfor %}
+                    <div class="transaction-container t-item-1">
+                        <article class="transaction">
+                        <div class="name-date">
+                        <p class="trans-name">{{ t.category }}</p>
+                        <p class="trans-date">{{ t.created|date:"d-m-Y"}}</p>
+                      </div>
+                      <div class="value">{{ t.amount }}</div>
+                    </article>
                   </div>
-                  <div class="value">-100€</div>
-                </article>
-                <div class="separator"></div>
+                </div>
               </div>
             </div>
           </section>
@@ -90,5 +127,7 @@
     <footer>
       <p>&copy; Together Finance, Collabathon 2023</p>
     </footer>
+
+{#    <script src="script.js"></script>#}
   </body>
 </html>

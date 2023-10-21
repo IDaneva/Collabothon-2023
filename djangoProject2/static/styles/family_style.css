@@ -1,0 +1,157 @@
+h3 {
+  font-weight: 500;
+}
+
+.transactions-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two equal-width columns */
+  grid-gap: 10px;
+}
+
+.transaction-container {
+  border-left: 3px solid #ffc914;
+  margin-top: 0;
+  padding-top: 2rem;
+  padding-left: 0.5rem;
+}
+
+.incomes,
+.expenses {
+  padding-left: 0.8rem;
+}
+
+.incomes {
+  margin-right: 3rem;
+}
+
+.incomes .value {
+  margin-right: 0.3rem;
+}
+
+.expenses .value {
+  margin-right: 0.3rem;
+}
+
+.expenses {
+  margin-left: 2rem;
+}
+
+.t-item-1 {
+  padding-top: 0.2rem;
+  margin-top: 1rem;
+}
+
+.transactions-heading {
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.filters {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Style for select element */
+/* Basic styles for the custom select container */
+.custom-select {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Style the trigger button */
+.select-trigger {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  color: #333;
+  font-size: 16px;
+}
+
+/* Style the options container */
+.select-options {
+  display: none;
+  position: absolute;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: #fff;
+  color: #333;
+  font-size: 16px;
+  width: 100%;
+}
+
+/* Style for option items */
+.select-options li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* Style for selected option */
+.select-options li.selected {
+  background-color: #ffc914;
+  color: #fff;
+}
+
+/* Styles for second customer select */
+
+/* Basic styles for the custom select container */
+.custom-select2 {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Style the trigger button */
+.select-trigger2 {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  color: #333;
+  font-size: 16px;
+}
+
+/* Style the options container */
+.select-options2 {
+  display: none;
+  position: absolute;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: #fff;
+  color: #333;
+  font-size: 16px;
+  width: 100%;
+}
+
+/* Style for option items */
+.select-options2 li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* Style for selected option */
+.select-options2 li.selected {
+  background-color: #ffc914;
+  color: #fff;
+}
+
+li a {
+  text-underline: none;
+  color: #000;
+}
+

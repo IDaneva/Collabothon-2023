@@ -8,66 +8,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+    <script src="{% static 'js/test.js' %}"></script>
+
     <title>Banking Website</title>
 </head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Welcome to Your Bank, {{account.holder.name}}</h1>
-            <nav class="tabs">
-                <ul>
-                    <li class="active-tab"><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'family' %}">Family</a></li>
-                </ul>
-            </nav>
-        </header>
-        <section class="tab-content">
-            <!-- Home Tab Content -->
-            <div class="tab home-tab active">
-                <section class="account-info">
-                    <div class="account-details">
-                        <h2>Account Number:</h2>
-                        <p>{{account.number}}</p>
-                    </div>
-                    <div class="account-balance">
-                        <h2>Account Balance:</h2>
-                        <p>{{ account.amount }} BGN</p>
-                    </div>
-                </section>
-                <section class="transaction-history">
-                    <h2>Transaction History</h2>
-                    <div class="transaction-list">
-                        <div class="income">
-                            <p><strong>Income:</strong></p>
-                            <ul>
-                                {% for t in transactions %}
-                                    {% if  t.amount >= 0 %}
-                                        <li>{{ t.amount }} BGN </li>
-                                    {% endif %}
-                                {% endfor %}
 
-                            </ul>
-                        </div>
-                        <div class="spend">
-                            <p><strong>Spending:</strong></p>
-                            <ul>
-                                {% for t in transactions %}
-                                    {% if t.amount < 0 %}
-                                            <li>{{ spends.amount }}  {{ spends.category }}</li>
-                                    {% endif %}
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
-                </section>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Welcome, {{account.holder.name}}</h1>
+        <nav class="nav">
+          <ul>
+            <li>
+              <a href="{% url 'home' %}"
+                ><img src="{% static 'images/home-nav.png' %}" class="home-img"
+              /></a>
+            </li>
+            <li>
+              <a href="{% url 'family' %}">
+                <img src="{% static 'images/members.png' %}" class="members-img" />
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <section class="tab-content">
+        <!-- Home Tab Content -->
+        <div class="tab home-tab active">
+          <section class="account-info">
+            <div class="account-details">
+              <h2>Account Number:</h2>
+              <p>{{account.number}}</p>
             </div>
-            <!-- Family Tab Content (To be developed) -->
-            <div class="tab family-tab">
-                <h2>Family Tab Content</h2>
-                <!-- Add content for the Family tab here -->
+            <div class="account-balance">
+              <h2>Account Balance:</h2>
+              <p>{{ account.amount }} BGN</p>
             </div>
-        </section>
+          </section>
+          <section class="transaction-history">
+            <h2 class="transactions-heading">Transaction History</h2>
+            <div class="transaction-list">
+                {% for t in transactions %}
+              <div class="transaction-container">
+                <article class="transaction">
+                  <div class="name-date">
+                    <p class="trans-name">{{ t.category }}</p>
+                    <p class="trans-date">{{ t.created|date:"d-m-Y" }}</p>
+                  </div>
+                  <div class="value">{{t.amount}} BGN</div>
+                </article>
+                <div class="separator"></div>
+              </div>
+
+                {% endfor %}
+            </div>
+          </section>
+        </div>
+      </section>
     </div>
-{#    <script src="script.js"></script>#}
-</body>
+
+    <footer>
+      <p>&copy; Together Finance, Collabathon 2023</p>
+    </footer>
+  </body></body>
 </html>
+
+

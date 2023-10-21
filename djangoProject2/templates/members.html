@@ -1,14 +1,36 @@
 <!DOCTYPE html>
-
 {% load static %}
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Member cards</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/member_styles.css' %}">
+    <title>Family Account Members</title>
 </head>
 <body>
-test
-
+    <div class="container">
+        <h1>Family Account Members</h1>
+        <div class="members-list">
+            <div class="member">
+                <div class="member-info">
+                    <h2>Name: John Doe</h2>
+                    <p>Account Number: 123456789</p>
+                </div>
+                <div class="customer-since">
+                    <p>Customer Since: January 1, 2010</p>
+                </div>
+            </div>
+            <div class="member">
+                <div class="member-info">
+                    <h2>Name: Jane Smith</h2>
+                    <p>Account Number: 987654321</p>
+                </div>
+                <div class="customer-since">
+                    <p>Customer Since: March 15, 2015</p>
+                </div>
+            </div>
+            <!-- Add more member entries as needed -->
+        </div>
+    </div>
 </body>
 </html>

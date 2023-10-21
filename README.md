@@ -28,7 +28,8 @@ Let's dive into the steps we had to take in order to get to the point where we a
 ![image](https://github.com/IDaneva/Collabothon-2023/assets/101068051/b1f8ddad-e190-4116-84b5-1caaa005ece2)
 
   our idea lies in the family button. Once clicked you can see the family account that was opened for you and the transactions which were made from and to this family account. The cool part is that you can filter out the transactions by categories and users
-  ![image](https://github.com/IDaneva/Collabothon-2023/assets/101068051/b1972bf2-5896-4104-a3f8-3d6f02794036)
+  ![image](https://github.com/IDaneva/Collabothon-2023/assets/101068051/95cefd83-6475-4b51-8507-9bdb063d234b)
+
 
   of course, sometimes it is necessary to make actual payments to the personal accounts. You can see the member information and account information once you click on the list button 
   ![image](https://github.com/IDaneva/Collabothon-2023/assets/101068051/e4a0ce8a-725d-4751-9343-59c7a3dd7ed2)

@@ -1,4 +1,3 @@
-/* Reset some default styles and set a background color */
 body,
 h1,
 h2,
@@ -36,7 +35,6 @@ footer {
   text-align: center;
 }
 
-/* Header Styles */
 header {
   padding: 20px;
   color: #000;
@@ -71,8 +69,6 @@ h2 {
   font-weight: bold;
   text-decoration: underline;
 }
-
-/* Main Content Styles */
 
 ul {
   position: absolute;
@@ -178,11 +174,11 @@ footer {
 }
 
 .income ul li {
-  color: gray; /* Green color for income */
+  color: gray;
 }
 
 .spend ul li {
-  color: #f44336; /* Red color for spendings */
+  color: #f44336;
 }
 
 .transactions-heading {

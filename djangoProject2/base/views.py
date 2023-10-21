@@ -123,3 +123,4 @@ def family_members(request):
             member_accounts.append(current_account)
     context = {"account": account, "member_accounts": member_accounts}
     return render(request, "members.html", context)
+

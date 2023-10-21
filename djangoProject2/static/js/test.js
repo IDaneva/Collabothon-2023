@@ -25,11 +25,5 @@ function setFilter(filterNum = "") {
         // Optionally, you can capture the selected value (e.g., item.getAttribute("data-value"))
       });
     });
-
-    document.querySelector("body").addEventListener("click", (e) => {
-      if (!e.target.classList.contains("selectT")) {
-        options.style.display = "none";
-      }
-    });
   });
 }

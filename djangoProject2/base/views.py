@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from base.models import Account, Customer, Transactions
 from django.db.models import Count
+from django.db.models import Q
 
 
 def set_account_amount(account):
@@ -25,15 +26,19 @@ def family_page(request):
     account = Account.objects.get(name="Kirilovi")
 
     transactions = Transactions.objects.filter(
-        person__name__icontains=q,
-        affected_account=account
+        Q(person__name__icontains=q),
+        Q(affected_account=account)
+        # Q(category__icontains=q)
     )
+    # transactions = Transactions.objects.filter(
+    #     Q(affected_account=account),
+    #     Q(category__icontains=q)
+    # )
 
     total_spent_amount = sum(t.amount for t in transactions if t.amount < 0)
     total_income_amount = sum(t.amount for t in transactions if t.amount >= 0)
 
     category_counts = Transactions.objects.values('category').annotate(count=Count('category'))
-
     unique_categories = [item['category'] for item in category_counts]
 
     # customer = Customer.objects.get(name="Kiril Kirilov")

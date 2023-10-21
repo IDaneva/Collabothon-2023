@@ -56,5 +56,5 @@ def family_page(request):
     return render(request, "family.html", context)
 
 
-def members_page(request):
+def family_cards(request):
     return render(request, "members.html")

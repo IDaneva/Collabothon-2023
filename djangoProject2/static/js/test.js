@@ -25,5 +25,12 @@ function setFilter(filterNum = "") {
         // Optionally, you can capture the selected value (e.g., item.getAttribute("data-value"))
       });
     });
+
+    document.querySelector("body").addEventListener("click", (e) => {
+      if (!e.target.classList.contains("selectT")) {
+        console.log("srabotva");
+        options.style.display = "none";
+      }
+    });
   });
 }

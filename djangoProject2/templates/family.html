@@ -51,8 +51,8 @@
           <section class="filters">
             <h2>Filter transactions</h2>
 
-            <div class="custom-select">
-              <div class="select-trigger">Select a categories option</div>
+            <div class="select custom-select">
+              <div class="selectT select-trigger">Select a categories option</div>
               <ul class="select-options">
                   {% for c in categories %}
                 <li data-value="option1"><a href="{% url 'family' %}?q={{c}}">{{c}}</a></li>
@@ -61,8 +61,8 @@
 
               </ul>
             </div>
-            <div class="custom-select2">
-              <div class="select-trigger2">Select a member option</div>
+            <div class="select custom-select2">
+              <div class="selectT select-trigger2">Select a member option</div>
               <ul class="select-options2">
                   {% for member in account.members.all %}
                 <li data-value="option1"><a href="{% url 'family' %}?q={{member.name}}">{{ member.name }}</a></li>

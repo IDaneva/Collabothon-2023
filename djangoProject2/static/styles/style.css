@@ -1,3 +1,4 @@
+/* Reset some default styles and set a background color */
 body,
 h1,
 h2,
@@ -35,6 +36,7 @@ footer {
   text-align: center;
 }
 
+/* Header Styles */
 header {
   padding: 20px;
   color: #000;
@@ -70,6 +72,8 @@ h2 {
   text-decoration: underline;
 }
 
+/* Main Content Styles */
+
 ul {
   position: absolute;
   display: flex;
@@ -77,21 +81,32 @@ ul {
   right: 2rem;
 }
 
-.home-img {
+.home-img,
+.members-img {
   margin-right: 1.5rem;
   padding-bottom: 0.3rem;
 }
 
 .home-img,
-.members-img {
+.members-img,
+.list-img {
   box-sizing: border-box;
   border-bottom: 3px solid #ffc914;
   transition: 0.3s all linear;
 }
 
 .home-img:hover,
-.members-img:hover {
+.members-img:hover,
+.list-img:hover {
   border-bottom: 7px solid #ffc914;
+}
+
+.home-img {
+  padding-bottom: 0.6rem;
+}
+
+.list-img {
+  padding-bottom: 0.3rem;
 }
 
 .tab-content {
@@ -99,8 +114,8 @@ ul {
 }
 
 .account-info {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two equal-width columns */
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
@@ -174,15 +189,73 @@ footer {
 }
 
 .income ul li {
-  color: gray;
+  color: gray; /* Green color for income */
 }
 
 .spend ul li {
-  color: #f44336;
+  color: #f44336; /* Red color for spendings */
 }
 
 .transactions-heading {
   font-weight: 100;
   text-align: center;
   margin-bottom: 2rem;
+}
+
+#showMenuButton {
+  display: none;
+}
+
+@media screen and (max-width: 500px) {
+  .account-info {
+    grid-template-columns: auto;
+  }
+
+  .account-details {
+    margin-bottom: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  body {
+    font-size: 0.9rem;
+  }
+
+  ul {
+    padding-top: 10px;
+    position: static;
+    background: #ffc914;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    max-width: 150px;
+    margin: 0 auto;
+  }
+
+  .home-img {
+    margin-right: 1rem;
+    margin-left: 1.5rem;
+  }
+
+  .home-img:hover,
+  .members-img:hover,
+  .list-img:hover {
+    border-bottom: 3px solid #000;
+  }
+
+  #popupMenu ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  #popupMenu li {
+    padding: 10px;
+    text-align: center;
+  }
+
+  #popupMenu a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+  }
 }

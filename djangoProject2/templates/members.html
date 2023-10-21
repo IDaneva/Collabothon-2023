@@ -5,27 +5,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'styles/member_styles.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/list_style.css' %}" />
+    <script src="{% static 'js/test.js' %}"></script>
     <title>Family Account Members</title>
 </head>
-<body>
-    <div class="container">
-        <h1>Family Account Members</h1>
-        <div class="members-list">
-            {% for m in member_accounts %}
-            <div class="member">
-                <div class="member-info">
-                    <h2>Name: {{ m.holder.name }}</h2>
-                    <p>Account Number: {{ m.number }}</p>
-                </div>
-                <div class="customer-since">
-                    <p>Customer Since: {{ m.created|date:"d-m-Y"}}</p>
-                </div>
-            </div>
-            {% endfor %}
 
+
+  <body>
+    <div class="container">
+      <header>
+        <h1>Welcome, Family {{ account.name }}</h1>
+        <nav class="nav">
+          <ul>
+            <li>
+              <a href="{% url 'home' %}"
+                ><img src="{% static 'images/home-nav.png' %}" class="home-img"
+              /></a>
+            </li>
+            <li>
+              <a href="{% url 'family' %}">
+                <img src="{% static 'images/members.png' %}" class="members-img" />
+              </a>
+            </li>
+            <li>
+              <a href="{% url 'members' %}">
+                <img src="{% static 'images/list-icon.png' %}" class="list-img" />
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <section class="tab-content">
+        <!-- Home Tab Content -->
+        <div class="tab home-tab active">
+          <section class="account-info">
+            <div class="account-details">
+              <h2>Account Number:</h2>
+              <p><i>{{ account.number }}</i></p>
+            </div>
+            <div class="account-balance">
+              <h2>Account Balance:</h2>
+              <p><i>{{ account.amount }} BGN</i></p>
+            </div>
+          </section>
+
+          <div class="cards">
+              {% for m in member_accounts %}
+            <article class="card">
+              <div class="chip"></div>
+              <div class="card-number">
+                <span>{{m.number}}</span>
+{#                <span>5678</span>#}
+{#                <span>9012</span>#}
+{#                <span>3456</span>#}
+              </div>
+              <div class="card-info">
+                <div class="card-holder">
+                  <label>Account holder name</label>
+                  <span>{{ m.holder.name }}</span>
+                </div>
+                <div class="valid">
+                  <label>Customer since</label>
+                  <span>{{ m.created|date:"d-m-Y"}}</span>
+                </div>
+
+              </div>
+
+            </article>
+              {% endfor %}
+
+          </div>
         </div>
+      </section>
     </div>
 
-</body>
+    <footer>
+      <p>&copy; Together Finance, Collabothon 2023</p>
+    </footer>
+
+{#    <script src="script.js"></script>#}
+  </body>
 </html>

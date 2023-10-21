@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/family-style.css" />
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/list_style.css' %}" />
     <title>Banking Website</title>
   </head>
   <body>
@@ -14,18 +15,18 @@
         <nav class="nav">
           <ul>
             <li>
-              <a href="home.html"
-                ><img src="img/home-nav.png" class="home-img"
+              <a href="{% url 'home' %}"
+                ><img src="i{% static 'images/home-nav.png' %}" class="home-img"
               /></a>
             </li>
             <li>
-              <a href="family.html">
-                <img src="img/members.png" class="members-img" />
+              <a href="{% url 'family' %}">
+                <img src="{% static 'images/members.png' %}" class="members-img" />
               </a>
             </li>
             <li>
-              <a href="list.html">
-                <img src="img/list-icon.png" class="list-img" />
+              <a href="{% url 'members' %}">
+                <img src="{% static 'images/list-icon.png' %}" class="list-img" />
               </a>
             </li>
           </ul>
@@ -44,77 +45,68 @@
               <p><i>$10,000.00</i></p>
             </div>
           </section>
-          <section class="filters">
-            <h2>Filter transactions</h2>
 
-            <div class="select custom-select">
-              <div class="selectT select-trigger">Select an option</div>
-              <ul class="select-options">
-                <li data-value="option1">Option 1</li>
-                <li data-value="option2">Option 2</li>
-                <li data-value="option3">Option 3</li>
-                <!-- Add more options as needed -->
-              </ul>
-            </div>
-            <div class="select custom-select2">
-              <div class="selectT select-trigger2">Select an option</div>
-              <ul class="select-options2">
-                <li data-value="option1">Option 1</li>
-                <li data-value="option2">Option 2</li>
-                <li data-value="option3">Option 3</li>
-                <!-- Add more options as needed -->
-              </ul>
-            </div>
-          </section>
-          <section class="transaction-history">
-            <h2 class="transactions-heading">Transaction History</h2>
-            <div class="transaction-list">
-              <div class="transactions-container">
-                <div class="incomes">
-                  <h3>Incomes:</h3>
-                  <div class="transaction-container t-item-1">
-                    <article class="transaction">
-                      <div class="name-date">
-                        <p class="trans-name">ivan trifonov</p>
-                        <p class="trans-date">Today</p>
-                      </div>
-                      <div class="value">-100€</div>
-                    </article>
-                  </div>
-                  <div class="transaction-container">
-                    <article class="transaction">
-                      <div class="name-date">
-                        <p class="trans-name">ivan trifonov</p>
-                        <p class="trans-date">Today</p>
-                      </div>
-                      <div class="value">-100€</div>
-                    </article>
-                  </div>
+          <div class="cards">
+            <article class="card">
+              <div class="chip"></div>
+              <div class="card-number">
+                <span>1234</span>
+                <span>5678</span>
+                <span>9012</span>
+                <span>3456</span>
+              </div>
+              <div class="card-info">
+                <div class="card-holder">
+                  <label>Cardholder Name</label>
+                  <span>Your Name</span>
                 </div>
-                <div class="expenses">
-                  <h3>Expenses:</h3>
-                  <div class="transaction-container t-item-1">
-                    <article class="transaction">
-                      <div class="name-date">
-                        <p class="trans-name">ivan trifonov</p>
-                        <p class="trans-date">Today</p>
-                      </div>
-                      <div class="value">-100€</div>
-                    </article>
-                  </div>
-                  <div class="transaction-container">
-                    <article class="transaction">
-                      <div class="name-date">
-                        <p class="trans-name">ivan trifonov</p>
-                        <p class="trans-date">Today</p>
-                      </div>
-                      <div class="value">-100€</div>
-                    </article>
-                  </div>
+                <div class="valid">
+                  <label>Valid Thru</label>
+                  <span>MM/YY</span>
                 </div>
               </div>
-            </div>
-          </section>
+            </article>
+
+            <article class="card">
+              <div class="chip"></div>
+              <div class="card-number">
+                <span>1234</span>
+                <span>5678</span>
+                <span>9012</span>
+                <span>3456</span>
+              </div>
+              <div class="card-info">
+                <div class="card-holder">
+                  <label>Cardholder Name</label>
+                  <span>Your Name</span>
+                </div>
+                <div class="valid">
+                  <label>Valid Thru</label>
+                  <span>MM/YY</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="chip"></div>
+              <div class="card-number">
+                <span>1234</span>
+                <span>5678</span>
+                <span>9012</span>
+                <span>3456</span>
+              </div>
+              <div class="card-info">
+                <div class="card-holder">
+                  <label>Cardholder Name</label>
+                  <span>Your Name</span>
+                </div>
+                <div class="valid">
+                  <label>Valid Thru</label>
+                  <span>MM/YY</span>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
     </div>

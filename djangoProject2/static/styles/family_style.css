@@ -55,22 +55,27 @@ h3 {
   text-align: center;
 }
 
+.filters h2 {
+  margin-bottom: 1.3rem;
+}
+
 /* Style for select element */
 /* Basic styles for the custom select container */
 .custom-select {
   position: relative;
   display: inline-block;
   cursor: pointer;
+  margin-right: 2.55rem;
 }
 
 /* Style the trigger button */
 .select-trigger {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 14px 25px;
   background-color: #f9f9f9;
   color: #333;
   font-size: 16px;
+  border: 0.02rem solid #ffc914;
+  border-radius: 20px;
 }
 
 /* Style the options container */
@@ -84,6 +89,7 @@ h3 {
   border-top: none;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  border-radius: 5px;
   background-color: #fff;
   color: #333;
   font-size: 16px;
@@ -92,14 +98,17 @@ h3 {
 
 /* Style for option items */
 .select-options li {
+  border-radius: 5px;
   padding: 10px;
   cursor: pointer;
 }
 
 /* Style for selected option */
 .select-options li.selected {
+  border-radius: 5px;
   background-color: #ffc914;
   color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Styles for second customer select */
@@ -113,12 +122,12 @@ h3 {
 
 /* Style the trigger button */
 .select-trigger2 {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 14px 25px;
   background-color: #f9f9f9;
   color: #333;
   font-size: 16px;
+  border: 0.02rem solid #ffc914;
+  border-radius: 20px;
 }
 
 /* Style the options container */
@@ -149,9 +158,3 @@ h3 {
   background-color: #ffc914;
   color: #fff;
 }
-
-li a {
-  text-underline: none;
-  color: #000;
-}
-

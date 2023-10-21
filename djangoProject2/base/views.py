@@ -107,6 +107,7 @@ def family_page(request):
 
 def family_members(request):
     account = Account.objects.get(name="Kirilovi")
+    account.amount = set_account_amount(account)
     member_accounts = []
     for m in account.members.all():
         current_account = Account.objects.get(name=m.name)

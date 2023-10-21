@@ -45,6 +45,7 @@
                 <li>{{ t.amount }} BGN</li>
                 {% endif %}
             {% endfor %}
+            <li> Total: {{total_income_amount}} BGN</li>
         </ul>
     </div>
     <div class="spend">
@@ -55,6 +56,7 @@
                 <li>{{ t.amount }} BGN {{ t.category }}</li>
                 {% endif %}
             {% endfor %}
+                <li> Total: {{total_spent_amount}} BGN</li>
         </ul>
     </div>
     <div class="members">

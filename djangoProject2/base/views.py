@@ -29,6 +29,9 @@ def family_page(request):
         affected_account=account
     )
 
+    total_spent_amount = sum(t.amount for t in transactions if t.amount < 0)
+    total_income_amount = sum(t.amount for t in transactions if t.amount >= 0)
+
     category_counts = Transactions.objects.values('category').annotate(count=Count('category'))
 
     unique_categories = [item['category'] for item in category_counts]
@@ -41,8 +44,9 @@ def family_page(request):
     context = {"account": account,
                "transactions": transactions,
                "members": members,
-               # "transactions_i": transactions_i,
-               "categories": unique_categories
+               "categories": unique_categories,
+               "total_spent_amount": total_spent_amount,
+               "total_income_amount": total_income_amount
                }
     return render(request, "family.html", context)
 

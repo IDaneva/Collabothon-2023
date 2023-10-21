@@ -1,7 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from base.models import Account, Customer, Transactions
 from django.db.models import Count
 from django.db.models import Q
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
+from django.contrib.auth.models import User
 
 
 def set_account_amount(account):
@@ -10,6 +15,55 @@ def set_account_amount(account):
     for t in transactions:
         amount += t.amount
     return amount
+
+
+def login_page(request):
+    page = "login"
+    if request.user.is_authenticated:
+        return redirect("home")
+
+    if request.method == "POST":
+        username = request.POST.get("username").lower()
+        password = request.POST.get("password")
+
+        try:
+            user = User.objects.get(username=username)
+        except:
+            messages.error(request, "User does not exist")
+
+        user = authenticate(request, username=username, password=password)
+
+        if not user:
+            messages.error(request, "Incorrect password")
+
+        else:
+            login(request, user)
+            return redirect("home")
+
+    context = {"page": page}
+    return render(request, "login_register.html", context)
+
+
+def logout_user(request):
+    logout(request)
+    return redirect("home")
+
+
+def register_user(request):
+    form = UserCreationForm()
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.username = user.username.lower()
+            user.save()
+            login(request, user)
+            return redirect("home")
+        else:
+            messages.error(request, "An error occurred. Try again")
+
+    context = {"form": form}
+    return render(request, "login_register.html", context)
 
 
 def home_page(request):
@@ -29,11 +83,6 @@ def family_page(request):
         (Q(person__name__icontains=q) & Q(affected_account=account)) |
         (Q(affected_account=account) & Q(category__icontains=q))
     )
-
-    # transactions = Transactions.objects.filter(
-    #     Q(affected_account=account),
-    #     Q(category__icontains=q)
-    # )
 
     total_spent_amount = sum(t.amount for t in transactions if t.amount < 0)
     total_income_amount = sum(t.amount for t in transactions if t.amount >= 0)

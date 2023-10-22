@@ -14,13 +14,15 @@
   border-radius: 8px;
   padding: 20px;
   text-align: center;
+  border-radius: 10px;
+  width: 300px;
 }
 
 /* Style the box header with a yellow background */
 .layout__boxHeader {
   background-color: #ffc107; /* Yellow background */
   padding: 10px;
-  border-radius: 8px 8px 0 0;
+  border-radius: 10px;
 }
 
 /* Style the form labels */
@@ -52,4 +54,18 @@
 
 .btn--link:hover {
   text-decoration: underline;
+}
+
+.form__group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+}
+
+#id_gender {
+  margin-right: 6.2rem;
+}
+
+h3 {
+  margin: 3px;
 }

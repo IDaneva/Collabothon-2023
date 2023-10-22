@@ -16,6 +16,8 @@ from django.contrib import messages
 
 from django.contrib.auth.models import User
 
+from .forms import CustomerRegistrationForm
+
 
 def set_account_amount(account):
     transactions = Transactions.objects.filter(affected_account=account)
@@ -31,21 +33,21 @@ def login_page(request):
         return redirect("home")
 
     if request.method == "POST":
-        username = request.POST.get("username").lower()
-        password = request.POST.get("password")
+        name = request.POST.get("name")
+        personal_number = request.POST.get("personal_number")
 
         try:
-            user = User.objects.get(username=username)
+            customer = Customer.objects.get(name=name, personal_number=personal_number)
         except:
             messages.error(request, "User does not exist")
 
-        user = authenticate(request, username=username, password=password)
+        customer = authenticate(request, name=name, personal_number=personal_number)
 
-        if not user:
+        if not customer:
             messages.error(request, "Incorrect password")
 
         else:
-            login(request, user)
+            login(request, customer)
             return redirect("home")
 
     context = {"page": page}
@@ -58,12 +60,12 @@ def logout_user(request):
 
 
 def register_user(request):
-    form = UserCreationForm()
+    form = CustomerRegistrationForm()
     if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.username = user.username.lower()
+            # user.username = user.username.lower()
             user.save()
             login(request, user)
             return redirect("home")
